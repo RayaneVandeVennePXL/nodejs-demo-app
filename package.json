@@ -39,9 +39,5 @@
   "jest-junit": {
     "outputDirectory": "reports",
     "outputName": "jest-results.xml"
-  },
-  "jest": {
-  "coverageDirectory": "coverage",
-  "coverageReporters": ["clover", "text", "lcov"]
-}
+  }
 }
