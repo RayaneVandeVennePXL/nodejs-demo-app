@@ -28,13 +28,12 @@ jobs:
       - name: Build the code
         run: npm run build
 
-      # 5️⃣ Tests uitvoeren (zonder package.json aan te passen)
+      
       - name: Run unit tests and generate report
-        run: |
-          echo "Running Jest tests in the tests/ directory..."
-          npx jest tests --ci --reporters=default --reporters=jest-junit --outputDirectory=reports --outputName=jest-results.xml
+        run: npm test
         env:
           CI: true
+
 
       # 6️⃣ Test rapport tonen in GitHub Actions
       - name: Test Report
