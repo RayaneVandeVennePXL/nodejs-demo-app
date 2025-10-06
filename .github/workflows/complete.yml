@@ -26,6 +26,18 @@ jobs:
       - name: build the code 
         run: npm run build
 
+      - name: Test the code
+        run: |
+          echo "Running unit tests..."
+          npm test -- --json --outputFile=test-results.json
+          
+      - name: Test rapport
+        uses: dorny/test-reporter@v2
+        with: 
+          name: JUnit Tests
+          path: reports/jest-*.xml
+           reporter: jest-junit
+
       
       - name: Verify files and folders
         run: |
