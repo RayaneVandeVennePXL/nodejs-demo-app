@@ -46,9 +46,10 @@ jobs:
           echo "Listing all files recursively:"
           ls -alhR
 
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v4
+      - name: Code Coverage Report
+        uses: mridang/action-test-reporter@v1
         with:
-          files: ./coverage/lcov.info
-          fail_ci_if_error: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: ./coverage/clover.xml # Path to your clover, cobertura, jacoco, or lcov file
+          working-directory: ./
 
