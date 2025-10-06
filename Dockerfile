@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # 7️⃣ Poort openzetten (optioneel, bv als je server draait)
-EXPOSE 3000
+EXPOSE 80
 
 # 8️⃣ Start commando
 CMD ["node", "src/index.js"]
