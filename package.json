@@ -14,7 +14,12 @@
     "prod": "NODE_ENV=production node src/server.js",
     "health": "curl -f http://localhost:5000/users || exit 1"
   },
-  "keywords": ["express", "api", "crud", "swagger"],
+  "keywords": [
+    "express",
+    "api",
+    "crud",
+    "swagger"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -27,6 +32,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
     "nodemon": "^3.0.2",
     "supertest": "^6.3.3"
   }
