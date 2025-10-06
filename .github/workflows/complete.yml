@@ -52,4 +52,21 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coverage-file: ./coverage/clover.xml # Path to your clover, cobertura, jacoco, or lcov file
           working-directory: ./
+            # 🔹 Log in op Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 🔹 Docker image bouwen
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/user-management-api:latest .
+
+      # 🔹 Docker image pushen naar Docker Hub
+      - name: Push Docker image
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/user-management-api:latest
+
 
