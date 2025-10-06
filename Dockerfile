@@ -13,11 +13,12 @@ RUN npm install --production
 # 5️⃣ Rest van de code kopiëren
 COPY . .
 
-# 6️⃣ Build (optioneel als je een build script hebt)
+# 6️⃣ Build (optioneel)
 RUN npm run build
 
-# 7️⃣ Poort openzetten (optioneel, bv als je server draait)
-EXPOSE 80
+# 7️⃣ Poort openzetten (dezelfde als je app luistert)
+EXPOSE 3000
 
 # 8️⃣ Start commando
-CMD ["node", "src/index.js"]
+CMD ["node", "src/server.js"]
+
