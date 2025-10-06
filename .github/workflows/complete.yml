@@ -38,7 +38,7 @@ jobs:
 
       # 6️⃣ Test rapport tonen in GitHub Actions
       - name: Test Report
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v1
         if: always()
         with:
           name: JUnit Tests
