@@ -10,31 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Code uitchecken
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Node.js instellen
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3️⃣ Dependencies installeren
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Code builden
       - name: Build the code
         run: npm run build
 
-      # 5️⃣ Tests uitvoeren en JUnit report genereren
-      - name: Run unit tests and generate report
-        run: npm test
+      # 🔹 Unit tests uitvoeren en JUnit-rapport genereren
+      - name: Test the code
+        run: |
+          echo "Running unit tests..."
+          npx jest --ci --reporters=default --reporters=jest-junit --outputDirectory=reports --outputName=jest-results.xml
         env:
           CI: true
 
-      # 6️⃣ Testrapport tonen in GitHub Actions
+      # 🔹 Test rapport uploaden naar GitHub Actions
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: always()
@@ -43,7 +41,6 @@ jobs:
           path: reports/jest-results.xml
           reporter: jest-junit
 
-      # 7️⃣ Bestanden tonen (optioneel)
       - name: Verify files and folders
         run: |
           echo "Listing all files recursively:"
