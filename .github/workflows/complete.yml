@@ -28,22 +28,22 @@ jobs:
       - name: Build the code
         run: npm run build
 
-      
+      # 5️⃣ Tests uitvoeren en JUnit report genereren
       - name: Run unit tests and generate report
         run: npm test
         env:
           CI: true
 
-      # 6️⃣ Test rapport tonen in GitHub Actions
+      # 6️⃣ Testrapport tonen in GitHub Actions
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         if: always()
         with:
           name: JUnit Tests
           path: reports/jest-results.xml
           reporter: jest-junit
 
-      # 7️⃣ Bestanden tonen
+      # 7️⃣ Bestanden tonen (optioneel)
       - name: Verify files and folders
         run: |
           echo "Listing all files recursively:"
