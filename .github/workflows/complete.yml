@@ -33,10 +33,11 @@ jobs:
           
       - name: Test rapport
         uses: dorny/test-reporter@v2
+        if: always()
         with: 
           name: JUnit Tests
-          path: reports/jest-*.xml
-           reporter: jest-junit
+          path: reports/jest-results.xml
+          reporter: jest-junit
 
       
       - name: Verify files and folders
